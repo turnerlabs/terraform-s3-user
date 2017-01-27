@@ -11,7 +11,7 @@ provider "aws" {
 }
 
 module "s3-user" {
-  source = "github.com/turnerlabs/terraform-s3-user?ref=v1.0"
+  source = "github.com/turnerlabs/terraform-s3-user?ref=v1.1"
 
   bucket_name = "my-bucket"
   user_name   = "srv_dev_my-bucket"
@@ -26,6 +26,7 @@ module "s3-user" {
 
 ### outputs
 
+- `user_arn` - user's ARN
 - `bucket_arn` - bucket's ARN
 - `iam_access_key_id` - IAM access key
 - `iam_access_key_secret` - IAM access secret
