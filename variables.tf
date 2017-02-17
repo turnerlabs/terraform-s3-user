@@ -2,9 +2,13 @@ variable "bucket_name" {}
 
 variable "user_name" {}
 
-# tags
+variable "versioning" {
+  default = false
+}
 
-variable "tag_environment" {}
+variable "tag_environment" {
+  # tags
+}
 
 variable "tag_team" {}
 

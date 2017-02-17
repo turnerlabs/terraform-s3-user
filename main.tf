@@ -13,6 +13,10 @@ resource "aws_s3_bucket" "bucket" {
   bucket        = "${var.bucket_name}"
   force_destroy = "true"
 
+  versioning {
+    enabled = "${var.versioning}"
+  }
+
   tags {
     team          = "${var.tag_team}"
     application   = "${var.tag_application}"
