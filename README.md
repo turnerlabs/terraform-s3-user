@@ -11,7 +11,7 @@ provider "aws" {
 }
 
 module "s3-user" {
-  source = "github.com/turnerlabs/terraform-s3-user?ref=v1.2"
+  source = "github.com/turnerlabs/terraform-s3-user?ref=v1.3"
 
   bucket_name = "my-bucket"
   user_name   = "srv_dev_my-bucket"
