@@ -41,6 +41,7 @@ resource "aws_iam_user_policy" "s3" {
         "s3:*"
       ],
       "Resource": [
+        "${aws_s3_bucket.bucket.arn}",
         "${aws_s3_bucket.bucket.arn}/*"
       ]
     }
