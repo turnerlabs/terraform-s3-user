@@ -1,6 +1,6 @@
 # we need a service account user
 resource "aws_iam_user" "user" {
-  name = "${var.user_name}"
+  name = "srv_${var.bucket_name}"
 }
 
 # generate keys for service account user
@@ -26,10 +26,9 @@ resource "aws_s3_bucket" "bucket" {
   }
 }
 
-# add a user policy that grants service account user access to the s3 bucket
-resource "aws_iam_user_policy" "s3" {
-  name = "${var.bucket_name}"
-  user = "${var.user_name}"
+# grant user access to the bucket
+resource "aws_s3_bucket_policy" "bucket_policy" {
+  bucket = "${aws_s3_bucket.bucket.id}"
 
   policy = <<EOF
 {
@@ -37,9 +36,10 @@ resource "aws_iam_user_policy" "s3" {
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": [
-        "s3:*"
-      ],
+      "Principal": {
+        "AWS": "${aws_iam_user.user.arn}"
+      },
+      "Action": [ "s3:*" ],
       "Resource": [
         "${aws_s3_bucket.bucket.arn}",
         "${aws_s3_bucket.bucket.arn}/*"

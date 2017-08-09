@@ -1,7 +1,5 @@
 variable "bucket_name" {}
 
-variable "user_name" {}
-
 variable "versioning" {
   default = false
 }

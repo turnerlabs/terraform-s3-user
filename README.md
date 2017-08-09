@@ -10,12 +10,10 @@ provider "aws" {
   profile = "digital-sandbox"
 }
 
-module "s3-user" {
-  source = "github.com/turnerlabs/terraform-s3-user?ref=v1.4"
+module "s3_user" {
+  source = "github.com/turnerlabs/terraform-s3-user?ref=v2.0"
 
   bucket_name = "my-bucket"
-  user_name   = "srv_dev_my-bucket"
-  versioning  = true
 
   tag_team          = "my-team"
   tag_contact-email = "my-team@turner.com"
@@ -27,7 +25,16 @@ module "s3-user" {
 
 ### outputs
 
-- `user_arn` - user's ARN
 - `bucket_arn` - bucket's ARN
+- `bucket_name` - bucket's name
+- `user_arn` - user's ARN
+- `user_name` - user's name
 - `iam_access_key_id` - IAM access key
 - `iam_access_key_secret` - IAM access secret
+
+
+view output
+
+```
+$ terraform output -module s3_user
+```
