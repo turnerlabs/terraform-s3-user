@@ -1,3 +1,8 @@
+/**
+ * A Terraform module that creates a tagged S3 bucket and an IAM user/key with access to the bucket
+ */
+
+
 # we need a service account user
 resource "aws_iam_user" "user" {
   name = "srv_${var.bucket_name}"

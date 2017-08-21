@@ -1,8 +1,35 @@
 ### terraform-s3-user
 
-A Terraform module that creates a tagged S3 bucket and an IAM user/key with access to the bucket.
 
-### usage
+A Terraform module that creates a tagged S3 bucket and an IAM user/key with access to the bucket
+
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| bucket_name | name of the bucket | string | - | yes |
+| tag_application | application | string | - | yes |
+| tag_contact-email | contact-email | string | - | yes |
+| tag_customer | customer | string | - | yes |
+| tag_environment | environment | string | - | yes |
+| tag_team | team | string | - | yes |
+| versioning | enable versioning | string | `false` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| bucket_arn | the arn of the bucket that was created |
+| bucket_name | the name of the bucket |
+| iam_access_key_id | the access key |
+| iam_access_key_secret | the access key secret |
+| user_arn | the arn of the user that was created |
+| user_name | the name of the service account user that was created |
+
+
+
+### usage example
 
 ```terraform
 provider "aws" {
@@ -23,18 +50,9 @@ module "s3_user" {
 }
 ```
 
-### outputs
-
-- `bucket_arn` - bucket's ARN
-- `bucket_name` - bucket's name
-- `user_arn` - user's ARN
-- `user_name` - user's name
-- `iam_access_key_id` - IAM access key
-- `iam_access_key_secret` - IAM access secret
-
-
-view output
-
 ```
-$ terraform output -module s3_user
+terraform init
+terraform plan
+terraform apply
+terraform output -module s3_user
 ```
