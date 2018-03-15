@@ -15,6 +15,8 @@ A Terraform module that creates a tagged S3 bucket and an IAM user/key with acce
 | tag_environment | environment | string | - | yes |
 | tag_team | team | string | - | yes |
 | versioning | enable versioning | string | `false` | no |
+| multipart_delete | enable incomplete multipart upload deletion | string | `true` | no |
+| multipart_days | incomplete multipart upload deletion days | string | `3` | no |
 
 ## Outputs
 
@@ -38,7 +40,7 @@ provider "aws" {
 }
 
 module "s3_user" {
-  source = "github.com/turnerlabs/terraform-s3-user?ref=v2.0"
+  source = "github.com/turnerlabs/terraform-s3-user?ref=v2.1"
 
   bucket_name = "my-bucket"
 
