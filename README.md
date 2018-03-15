@@ -33,7 +33,7 @@ A Terraform module that creates a tagged S3 bucket and an IAM user/key with acce
 
 ### usage example
 
-```terraform
+```hcl
 provider "aws" {
   region  = "us-east-1"
   profile = "digital-sandbox"
