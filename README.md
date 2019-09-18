@@ -3,6 +3,8 @@
 
 A Terraform module that creates a tagged S3 bucket and an IAM user/key with access to the bucket
 
++**WARNING**: This module outputs the IAM Secret key of the user it creates and it will be part of your project's tfstate file. Please be very careful where you store the tfstate file and especially do not commit the tfstate file as is in your VCS. Consider using a [Terraform remote state backend](https://www.terraform.io/docs/backends/types/index.html) that supports encryption and secure policies.
+
 
 ## Inputs
 
